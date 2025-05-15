@@ -6,7 +6,7 @@ import NewsModal from "@/components/NewsModal";
 import { News } from "@/types/news";
 
 const categorias = ["Todos", "Jogos", "Contratações", "Táticas", "História do Flamengo"];
-const NOTICIAS_POR_PAGINA = 5;
+//const NOTICIAS_POR_PAGINA = 5;
 
 export default function Noticias() {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
