@@ -5,27 +5,36 @@ import "./globals.css";
 
 function Navbar() {
   return (
-    <nav className="absolute top-0 left-0 w-full py-4 px-6 flex justify-between items-center z-20 bg-transparent text-white">
-      {/* Logo */}
-      <h1 className="text-2xl font-extrabold text-white tracking-wide">Flamengo Verso</h1>
+    <header className="sticky top-0 left-0 w-full z-50 bg-red-700/90 backdrop-blur-sm shadow-md">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Logo + Título */}
+        <div className="flex items-center gap-2">
+          {/* Se quiser usar logo, adicione a imagem abaixo no /public/logo.png */}
+          {/* <img src="/logo.png" alt="Logo" className="w-8 h-8 hidden sm:block" /> */}
+          <h1 className="text-xl font-bold tracking-wide">Flamengo Verso</h1>
+        </div>
 
-      {/* Menu de Navegação */}
-      <ul className="flex gap-8 text-lg font-medium">
-        <li><Link href="/noticias" className="hover:text-red-500">Notícias</Link></li>
-        <li><Link href="/loja" className="hover:text-red-500">Loja</Link></li>
-        <li><Link href="/clubevip" className="hover:text-red-500">Clube VIP</Link></li>
-        <li><Link href="/fantasy" className="hover:text-red-500">Fantasy Game</Link></li>
-        <li><Link href="/nfts" className="hover:text-red-500">NFTs</Link></li>
-      </ul>
+        {/* Menu de Navegação */}
+        <ul className="hidden md:flex gap-6 text-sm font-medium">
+          <li><Link href="/noticias" className="hover:underline">Notícias</Link></li>
+          {/*<li><Link href="/loja" className="hover:underline">Loja</Link></li>
+          <li><Link href="/clubevip" className="hover:underline">Clube VIP</Link></li>
+          <li><Link href="/fantasy" className="hover:underline">Fantasy Game</Link></li>
+          <li><Link href="/nfts" className="hover:underline">NFTs</Link></li>*/}
+        </ul>
 
-      {/* Ações (Entrar / Cadastrar) */}
-      <div className="flex gap-6 items-center">
-        <Link href="/login" className="text-white font-medium hover:text-red-500">Entrar</Link>
-        <Link href="/cadastro" className="bg-red-600 text-white px-5 py-2 rounded-lg font-semibold text-sm uppercase tracking-wide hover:bg-red-700">
-          Cadastrar
-        </Link>
+        {/* Ações (Entrar / Cadastrar) */}
+        <div className="flex gap-4 items-center text-sm">
+          <Link href="/login" className="hover:underline">Entrar</Link>
+          <Link
+            href="/cadastro"
+            className="bg-white text-red-700 font-semibold px-3 py-1 rounded hover:bg-gray-100 transition"
+          >
+            Cadastrar
+          </Link>
+        </div>
       </div>
-    </nav>
+    </header>
   );
 }
 
@@ -49,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="bg-cover bg-center text-white flex flex-col min-h-screen"
         style={{
           backgroundImage: "url('/images/custom-banner.jpg')",
-          backgroundAttachment: "fixed", // 🔥 Mantém o fundo fixo
+          backgroundAttachment: "fixed",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
