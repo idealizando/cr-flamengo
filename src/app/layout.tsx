@@ -2,6 +2,8 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import CookieConsent from "@/components/CookieConsent";
+
 
 function Navbar() {
   return (
@@ -18,6 +20,9 @@ function Navbar() {
               {/* Menu de Navegação */}
               <ul className="hidden md:flex gap-6 text-sm font-medium">
                   <li><Link href="/noticias" className="hover:underline">Notícias</Link></li>
+                  <li><Link href="/sobre" className="hover:underline">Sobre</Link></li>
+                  <li><Link href="/blog" className="hover:underline">Blog</Link></li>
+
                   {/*<li><Link href="/loja" className="hover:underline">Loja</Link></li>
           <li><Link href="/clubevip" className="hover:underline">Clube VIP</Link></li>
           <li><Link href="/fantasy" className="hover:underline">Fantasy Game</Link></li>
@@ -40,9 +45,12 @@ function Navbar() {
 }
 
 function Footer() {
-    return (
-        <footer className="bg-black text-white py-4 text-center">
-      © 2025 Flamengo Verso - Todos os direitos reservados.
+  return (
+    <footer className="bg-black text-white py-4 text-center text-sm border-t border-red-700">
+      © 2025 Flamengo Verso - Todos os direitos reservados. |{" "}
+      <Link href="/sobre" className="underline hover:text-gray-300">Sobre</Link> |{" "}
+      <Link href="/privacidade" className="underline hover:text-gray-300">Política de Privacidade</Link> |{" "}
+      <Link href="/termos" className="underline hover:text-gray-300">Termos de Uso</Link>
     </footer>
   );
 }
@@ -64,9 +72,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           backgroundPosition: "center",
         }}
       >
+
         <Navbar />
         <main className="container mx-auto px-4 py-6 flex-grow">{children}</main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   );
