@@ -12,7 +12,7 @@ export default function BlogPage() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5000/");
+        const response = await fetch("https://back-end-flamengo-verso-138417386089.us-central1.run.app");
         const data = await response.json();
 
         // Mapear os dados do backend para o formato esperado pelo frontend

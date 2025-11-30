@@ -12,7 +12,7 @@ async function getPost(slug: string) {
     try {
         // Como não temos um endpoint de detalhe confirmado, vamos buscar todos e filtrar
         // Em produção, o ideal seria: fetch(`http://127.0.0.1:5000/posts/${slug}`)
-        const response = await fetch("http://127.0.0.1:5000/", { cache: 'no-store' });
+        const response = await fetch("https://back-end-flamengo-verso-138417386089.us-central1.run.app", { cache: 'no-store' });
         const data = await response.json();
 
         const backendPost = data.posts.find((p: { slug: string; id: string; titulo: string; texto: string; imagem: string; data_criacao: string; categoria: string; autor: string; }) => p.slug === slug);
