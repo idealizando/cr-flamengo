@@ -1,34 +1,69 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import PostCard from "@/components/PostCard";
+import { BlogPost } from "@/data/posts";
 
-export default function Blog() {
+export default function BlogPage() {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:5000/");
+        const data = await response.json();
+
+        // Mapear os dados do backend para o formato esperado pelo frontend
+        const mappedPosts: BlogPost[] = data.posts.map((post: any) => ({
+          id: post.id,
+          title: post.titulo,
+          excerpt: post.texto.substring(0, 150) + "...", // Resumo simples
+          content: post.texto,
+          coverImage: post.imagem,
+          date: new Date(post.data_criacao).toLocaleDateString("pt-BR", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          }),
+          category: post.categoria,
+          author: post.autor,
+          slug: post.slug,
+        }));
+
+        setPosts(mappedPosts);
+      } catch (error) {
+        console.error("Erro ao carregar posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
   return (
-    <section className="container mx-auto px-4 py-8 text-white">
-      <h1 className="text-4xl font-bold mb-6">Blog Rubro-Negro</h1>
-      <p className="mb-6">
-        Explore análises táticas, momentos históricos, curiosidades e histórias incríveis da torcida do Flamengo.
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Link href="/blog/analises" className="block bg-red-700/80 hover:bg-red-600 rounded p-6 shadow-lg transition">
-          <h2 className="text-xl font-semibold mb-2">Análises</h2>
-          <p className="text-sm text-gray-200">Estudos táticos e avaliações de desempenho em campo.</p>
-        </Link>
-
-        <Link href="/blog/historia" className="block bg-red-700/80 hover:bg-red-600 rounded p-6 shadow-lg transition">
-          <h2 className="text-xl font-semibold mb-2">História</h2>
-          <p className="text-sm text-gray-200">Conquistas, ídolos e momentos inesquecíveis do clube.</p>
-        </Link>
-
-        <Link href="/blog/curiosidades" className="block bg-red-700/80 hover:bg-red-600 rounded p-6 shadow-lg transition">
-          <h2 className="text-xl font-semibold mb-2">Curiosidades</h2>
-          <p className="text-sm text-gray-200">Fatos interessantes e estatísticas pouco conhecidas.</p>
-        </Link>
-
-        <Link href="/blog/torcida" className="block bg-red-700/80 hover:bg-red-600 rounded p-6 shadow-lg transition">
-          <h2 className="text-xl font-semibold mb-2">Torcida</h2>
-          <p className="text-sm text-gray-200">Histórias da Nação Rubro-Negra pelos estádios e pelo mundo.</p>
-        </Link>
+    <div className="min-h-screen text-white pt-4">
+      <div className="container mx-auto px-4">
+        {/* Lista de Posts */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12">
+          {loading ? (
+            // Skeleton Loading simples
+            Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="bg-neutral-900/50 h-96 rounded-xl animate-pulse" />
+            ))
+          ) : posts.length > 0 ? (
+            posts.map((post) => (
+              <PostCard key={post.id} post={post} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-20">
+              <p className="text-gray-400 text-xl">Nenhum post encontrado.</p>
+            </div>
+          )}
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
