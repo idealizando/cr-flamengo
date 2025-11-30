@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 interface BlogPostPageProps {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
 async function getPost(slug: string) {
@@ -15,7 +15,7 @@ async function getPost(slug: string) {
         const response = await fetch("http://127.0.0.1:5000/", { cache: 'no-store' });
         const data = await response.json();
 
-        const backendPost = data.posts.find((p: any) => p.slug === slug);
+        const backendPost = data.posts.find((p: { slug: string; id: string; titulo: string; texto: string; imagem: string; data_criacao: string; categoria: string; autor: string; }) => p.slug === slug);
 
         if (!backendPost) return null;
 
@@ -41,7 +41,8 @@ async function getPost(slug: string) {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
-    const post = await getPost(params.slug);
+    const { slug } = await params;
+    const post = await getPost(slug);
 
     if (!post) {
         return {
@@ -56,7 +57,8 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-    const post = await getPost(params.slug);
+    const { slug } = await params;
+    const post = await getPost(slug);
 
     if (!post) {
         notFound();

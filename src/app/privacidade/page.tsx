@@ -42,7 +42,7 @@ export default function PrivacyPolicy() {
                     <section>
                         <h2 className="text-xl font-semibold text-white mb-3">4. Cookies</h2>
                         <p>
-                            O nosso site pode usar "cookies" para melhorar a experiência do usuário. Você tem a liberdade de recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.
+                            O nosso site pode usar &quot;cookies&quot; para melhorar a experiência do usuário. Você tem a liberdade de recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.
                         </p>
                     </section>
 

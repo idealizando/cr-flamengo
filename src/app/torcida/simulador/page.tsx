@@ -39,7 +39,7 @@ export default function SimuladorPage() {
                 <div className="mb-8">
                     <div className="bg-black/50 p-6 rounded-xl border border-neutral-700 mb-6">
                         <h2 className="text-xl font-bold text-white mb-2">{scenario.title}</h2>
-                        <p className="text-gray-300 italic">"{scenario.situation}"</p>
+                        <p className="text-gray-300 italic">&quot;{scenario.situation}&quot;</p>
                     </div>
 
                     {!result ? (
@@ -58,8 +58,8 @@ export default function SimuladorPage() {
                     ) : (
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                             <div className={`p-6 rounded-xl border mb-6 ${result.outcome.includes("Vitória")
-                                    ? "bg-green-900/30 border-green-600 text-green-100"
-                                    : "bg-red-900/30 border-red-600 text-red-100"
+                                ? "bg-green-900/30 border-green-600 text-green-100"
+                                : "bg-red-900/30 border-red-600 text-red-100"
                                 }`}>
                                 <h3 className="font-bold text-lg mb-2">Resultado:</h3>
                                 <p>{result.outcome}</p>

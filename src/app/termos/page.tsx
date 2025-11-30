@@ -31,14 +31,14 @@ export default function TermsOfUse() {
                             <li>Usar os materiais para qualquer finalidade comercial ou para exibição pública (comercial ou não comercial);</li>
                             <li>Tentar descompilar ou fazer engenharia reversa de qualquer software contido no site Flamengo Verso;</li>
                             <li>Remover quaisquer direitos autorais ou outras notações de propriedade dos materiais; ou</li>
-                            <li>Transferir os materiais para outra pessoa ou 'espelhe' os materiais em qualquer outro servidor.</li>
+                            <li>Transferir os materiais para outra pessoa ou &apos;espelhe&apos; os materiais em qualquer outro servidor.</li>
                         </ul>
                     </section>
 
                     <section>
                         <h2 className="text-xl font-semibold text-white mb-3">3. Isenção de responsabilidade</h2>
                         <p>
-                            Os materiais no site da Flamengo Verso são fornecidos 'como estão'. Flamengo Verso não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um fim específico ou não violação de propriedade intelectual ou outra violação de direitos.
+                            Os materiais no site da Flamengo Verso são fornecidos &apos;como estão&apos;. Flamengo Verso não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um fim específico ou não violação de propriedade intelectual ou outra violação de direitos.
                         </p>
                     </section>
 

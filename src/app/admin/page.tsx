@@ -52,7 +52,7 @@ export default function AdminPage() {
 
                 <div className="bg-neutral-900 p-6 rounded-xl border border-neutral-800 mb-8">
                     <label className="block text-sm font-medium text-gray-400 mb-2">
-                        Contexto do Post (Ex: "Vitória contra o Vasco", "Reforço anunciado")
+                        Contexto do Post (Ex: &quot;Vitória contra o Vasco&quot;, &quot;Reforço anunciado&quot;)
                     </label>
                     <div className="flex gap-4">
                         <input
@@ -66,8 +66,8 @@ export default function AdminPage() {
                             onClick={handleGenerate}
                             disabled={isGenerating || !context}
                             className={`px-6 py-3 rounded-lg font-bold transition-all ${isGenerating || !context
-                                    ? "bg-gray-700 text-gray-500 cursor-not-allowed"
-                                    : "bg-red-600 hover:bg-red-500 text-white shadow-lg"
+                                ? "bg-gray-700 text-gray-500 cursor-not-allowed"
+                                : "bg-red-600 hover:bg-red-500 text-white shadow-lg"
                                 }`}
                         >
                             {isGenerating ? "Gerando..." : "Gerar com IA ✨"}
